@@ -1,0 +1,36 @@
+* {
+  padding: 0%;
+}
+
+.main .product {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pic {
+  height: 100px;
+  width: 100px;
+}
+
+.cartpage .cart_item {
+  display: flex;
+}
+.img {
+  height: 100px;
+  width: 100px;
+}
+
+.product {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.mydiv {
+  width: 250px;
+  height: 300px;
+}
+
+.cart_item {
+  display: flex;
+}
