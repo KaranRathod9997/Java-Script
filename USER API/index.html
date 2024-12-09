@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>USER API</title>
+  </head>
+  <style>
+    .card {
+      max-width: 350px;
+      margin: auto;
+      margin-top: 8%;
+      background-image: linear-gradient(
+        to bottom,
+        #020024,
+        #370437,
+        #5c0745,
+        #14a7d6,
+        #00d4ff
+      );
+      padding: 20px 20px;
+      border: 1px solid black;
+      border-radius: 10px;
+      color: white;
+      font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+    }
+    #img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+      border-radius: 50%;
+    }
+    img {
+      border: 1px solid black;
+      border-radius: 50%;
+    }
+    button {
+      display: block;
+      margin: auto;
+      border-radius: 10px;
+      width: 150px;
+      height: 30px;
+      color: white;
+      border: 0px;
+
+      background-color: rgb(91, 91, 218);
+    }
+  </style>
+  <body>
+    <div class="card">
+      <img src="" alt="" id="img" />
+      <p>Name :- <span id="Name"></span></p>
+      <p>Gender :- <span id="Gender"></span></p>
+      <p>Loctaion :- <span id="Loctaion"></span></p>
+      <p>Email :- <span id="Email"></span></p>
+      <p>DOB :- <span id="DOB"></span></p>
+      <p>Age :- <span id="Age"></span></p>
+      <p>Number :- <span id="Number"></span></p>
+      <button onclick="getdata()">GET NEW USER</button>
+    </div>
+  </body>
+  <script>
+    const getdata = () => {
+      fetch("https://randomuser.me/api/")
+        .then((Response) => Response.json())
+        .then((data) => {
+          // console.log(data);
+          // console.log(data.results[0].picture.medium);
+          const img = document.getElementById("img");
+          const Name = document.getElementById("Name");
+          const Gender = document.getElementById("Gender");
+          const Loctaion = document.getElementById("Loctaion");
+          const Email = document.getElementById("Email");
+          const DOB = document.getElementById("DOB");
+          const Age = document.getElementById("Age");
+          const Number = document.getElementById("Number");
+
+          img.src = data.results[0].picture.medium;
+          Name.innerHTML = `${data.results[0].name.title} ${data.results[0].name.frist} ${data.results[0].name.last}`;
+          Gender.innerHTML = data.results[0].gender;
+          Loctaion.innerHTML = `${data.results[0].location.city} ${data.results[0].location.state} ${data.results[0].location.country}`;
+          Email.innerHTML = data.results[0].email;
+          DOB.innerHTML = data.results[0].dob.date;
+          Age.innerHTML = data.results[0].dob.age;
+          Number.innerHTML = data.results[0].phone;
+        })
+        .catch((err) => console.log(err));
+    };
+  </script>
+</html>
